@@ -79,7 +79,7 @@ int main() {
 #pragma endregion
 
 #pragma region Texture
-	std::string imagePath = currentPath + "\\src\\Textures\\Miaws1.jpg";
+	std::string imagePath = currentPath + "\\src\\Textures\\Miaws3.jpg";
 
 	int width, height;
 	unsigned int image = loadTexture(imagePath, width, height);
