@@ -79,7 +79,7 @@ int main() {
 #pragma endregion
 
 #pragma region Texture
-
+	std::string imagePath = currentPath + "\\src\\Textures\\Miaws3.jpg";
 #pragma endregion
 
 #pragma region Quad
