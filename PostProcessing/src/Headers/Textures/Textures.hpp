@@ -14,6 +14,6 @@ struct Texture
 	std::string path;
 };
 
-unsigned int loadTexture(std::string path);
+unsigned int loadTexture(std::string path, int& width, int& height);
 unsigned int TextureFromFile(const char* path, const std::string& directory);
 #endif // TEXTURE_H

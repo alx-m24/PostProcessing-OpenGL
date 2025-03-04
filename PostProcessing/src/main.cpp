@@ -79,7 +79,10 @@ int main() {
 #pragma endregion
 
 #pragma region Texture
-	std::string imagePath = currentPath + "\\src\\Textures\\Miaws3.jpg";
+	std::string imagePath = currentPath + "\\src\\Textures\\Miaws1.jpg";
+
+	int width, height;
+	unsigned int image = loadTexture(imagePath, width, height);
 #pragma endregion
 
 #pragma region Quad
@@ -146,8 +149,25 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 #pragma endregion
 
+#pragma region Viewport size
+		float scale = (float)SCR_HEIGHT / static_cast<float>(height);
+
+		int viewportWidth = width * scale;
+		int viewportHeight = SCR_HEIGHT;
+
+		int Xoffset = (SCR_WIDTH - viewportWidth) / 2;
+
+		glViewport(Xoffset, 0, viewportWidth, viewportHeight);
+#pragma endregion
+
 #pragma region Drawing image
 		shader.use();
+		shader.setVec2("uResolution", viewportWidth, viewportHeight);
+		shader.setVec2("uOffset", Xoffset, 0.0f);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, image);
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 #pragma endregion
