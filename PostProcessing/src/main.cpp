@@ -164,6 +164,7 @@ int main() {
 		shader.use();
 		shader.setVec2("uResolution", viewportWidth, viewportHeight);
 		shader.setVec2("uOffset", Xoffset, 0.0f);
+		shader.setFloat("time", myTime);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, image);
