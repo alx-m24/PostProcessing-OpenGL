@@ -68,6 +68,10 @@ vec3 edgeDetection(vec2 TexCoords) {
     return kernelEffect(kernel, TexCoords);
 }
 
+vec3 inverseColor(vec3 color) {
+    return 1.0 - color;
+}
+
 void main() {
 	vec2 fragCoord = gl_FragCoord.xy - uOffset;
 	vec2 uv = fragCoord / uResolution;
@@ -81,6 +85,7 @@ void main() {
     //color = blur(uv);
     //color = edgeDetection(uv);
     //color = grayScale(color);
+    color = mix(color, inverseColor(color), (sin(time) + 1.0) / 2.0);
 
     fragColor = vec4(color, 1.0);
 }
